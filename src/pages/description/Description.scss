@@ -20,7 +20,7 @@ $dim-on-hover: rgba(232, 221, 208, 0.12);
   }
 
   @media (max-width: 480px) {
-    min-height: 60vh;
+    min-height: 70vh;
     padding: 3rem 1rem;
   }
 }
@@ -60,9 +60,10 @@ $dim-on-hover: rgba(232, 221, 208, 0.12);
   font-weight: normal;
   margin: 0;
   position: relative;
-  // no z-index here — avoids creating a stacking context
-  // that traps keyword z-indexes inside it
 
+  @media (max-width: 768px) {
+    z-index: 2;
+  }
   .desc-style {
     font-family: "styleMain", serif;
     color: $text-dim;
@@ -89,7 +90,7 @@ $dim-on-hover: rgba(232, 221, 208, 0.12);
       bottom: -2px;
       left: 0;
       width: 0;
-      height: 1px;
+      height: 4px;
       background: $text-color;
       transition: width 0.35s ease;
       z-index: 100;

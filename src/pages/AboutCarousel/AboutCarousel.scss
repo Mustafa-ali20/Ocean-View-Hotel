@@ -87,7 +87,7 @@ $card-size-mobile: 82vw;
 
     @media (max-width: 600px) {
       transform: translateX(calc(#{$card-size-mobile} * -1.02));
-      opacity: 0.4;
+      opacity: 0.4; 
     }
   }
 
