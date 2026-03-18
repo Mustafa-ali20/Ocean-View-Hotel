@@ -1,0 +1,198 @@
+$bg: #e9e1d6;
+$text-dark: #011928;
+$text-muted: rgba(26, 26, 26, 0.5);
+$card-bg: #f5f0ea;
+$transition: 0.95s cubic-bezier(0.4, 0, 0.2, 1);
+
+// card sizing — adjust these to control card dimensions
+$card-size: min(620px, 44vw);
+$card-size-tablet: min(480px, 72vw);
+$card-size-mobile: 82vw;
+
+.carousel {
+  background-color: $bg;
+  padding: 5rem 0 4rem;
+  overflow: hidden;
+  position: relative;
+}
+
+// ─── Track ────────────────────────────────────────────────────
+.carousel__track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(#{$card-size} + 160px); // card height + content below
+  width: 100%;
+
+  @media (max-width: 1024px) {
+    height: calc(#{$card-size-tablet} + 140px);
+  }
+
+  @media (max-width: 600px) {
+    height: calc(#{$card-size-mobile} + 130px);
+  }
+}
+
+// ─── Cards ────────────────────────────────────────────────────
+.carousel__card {
+  position: absolute;
+  width: $card-size;
+  transition:
+    transform $transition,
+    opacity $transition,
+    scale $transition;
+  cursor: pointer;
+
+  @media (max-width: 1024px) {
+    width: $card-size-tablet;
+  }
+
+  @media (max-width: 600px) {
+    width: $card-size-mobile;
+  }
+
+  // position cards by data-rel attribute
+  &[data-rel="0"] {
+    transform: translateX(0);
+    opacity: 1;
+    scale: 1;
+    z-index: 3;
+    cursor: default;
+  }
+
+  &[data-rel="1"] {
+    transform: translateX(calc(#{$card-size} * 1.15));
+    scale: 0.88;
+    z-index: 2;
+
+    @media (max-width: 1024px) {
+      transform: translateX(calc(#{$card-size-tablet} * 1.1));
+    }
+
+    @media (max-width: 600px) {
+      transform: translateX(calc(#{$card-size-mobile} * 1.02));
+      opacity: 0.4;
+    }
+  }
+
+  &[data-rel="-1"] {
+    transform: translateX(calc(#{$card-size} * -1.15));
+    scale: 0.88;
+    z-index: 2;
+
+    @media (max-width: 1024px) {
+      transform: translateX(calc(#{$card-size-tablet} * -1.1));
+    }
+
+    @media (max-width: 600px) {
+      transform: translateX(calc(#{$card-size-mobile} * -1.02));
+      opacity: 0.4;
+    }
+  }
+
+  &[data-rel="2"] {
+    transform: translateX(calc(#{$card-size} * 2.45));
+    opacity: 0.6;
+    scale: 0.78;
+    z-index: 1;
+  }
+
+  &[data-rel="-2"] {
+    transform: translateX(calc(#{$card-size} * -2.45));
+    opacity: 0.6;
+    scale: 0.78;
+    z-index: 1;
+  }
+}
+
+// ─── Image wrap — overflow hidden for zoom ────────────────────
+.carousel__img-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #ccc;
+}
+
+.carousel__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  scale: 1.08;
+  transition: scale 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-user-drag: none;
+  user-select: none;
+
+  // active card — zoom out to normal
+  .carousel__card--active & {
+    scale: 1;
+  }
+}
+
+// ─── Content below image ──────────────────────────────────────
+.carousel__content {
+  padding: 1.5rem 0.25rem 0;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: none; // hidden state has no transition
+
+  &--visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    transition:
+      opacity 0.55s ease 0.15s,
+      transform 0.55s ease 0.15s;
+  }
+}
+
+.carousel__heading {
+  font-family: "main-bold", sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  color: $text-dark;
+  margin: 0 0 0.6rem;
+  letter-spacing: 0.01em;
+   user-select: none;
+}
+
+.carousel__para {
+  font-family: "main", sans-serif;
+  font-size: clamp(0.82rem, 1.1vw, 0.75rem);
+  color: $text-muted;
+  line-height: 1.35;
+  margin: 0;
+  max-width: 38ch;
+   user-select: none;
+}
+
+// ─── Nav arrows ───────────────────────────────────────────────
+.carousel__nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.carousel__arrow {
+  background: none;
+  border: 1px solid rgba(26, 26, 26, 0.25);
+  color: $text-dark;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+
+  &:hover {
+    background: rgba(26, 26, 26, 0.07);
+    border-color: rgba(26, 26, 26, 0.5);
+  }
+}

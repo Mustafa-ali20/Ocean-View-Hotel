@@ -1,0 +1,364 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+}
+
+// ─── Hero Section ─────────────────────────────────────────────────────────────
+
+@mixin subheading-underline {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.45s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  &:hover::after,
+  &--hovered::after {
+    width: 100%;
+  }
+}
+
+// ─── Root ─────────────────────────────────────────────────────────────────────
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  background-color: #00243a;
+  color: #f5efe6;
+  display: flex;
+  flex-direction: column;
+
+  // ─── Background Layer ────────────────────────────────────────────────────
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    img,
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    // dark overlay for legibility
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 26, 44, 0.35) 0%,
+        rgba(0, 26, 44, 0.18) 40%,
+        rgba(0, 26, 44, 0.45) 100%
+      );
+    }
+  }
+
+  // ─── Content wrapper ─────────────────────────────────────────────────────
+  &__content {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // ─── Center block ─────────────────────────────────────────────────────────
+  &__center {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  // ─── Main heading ─────────────────────────────────────────────────────────
+  &__heading {
+    margin: 0;
+    padding: 0;
+    line-height: 0.7;
+    display: flex;
+    align-items: baseline;
+    gap: 0.22em;
+    white-space: nowrap;
+
+
+    // font sizes: laptop → monitor → 4k
+    font-size: clamp(4.5rem, 8vw, 9.5rem);
+
+    @media (min-width: 1920px) {
+      font-size: clamp(9.5rem, 7vw, 13rem);
+    }
+
+    @media (min-width: 2560px) {
+      font-size: clamp(12rem, 6.5vw, 18rem);
+    }
+  }
+
+  &__heading-main {
+    font-family: "main", serif;
+    font-weight: 400;
+    color: #e8ddd0;
+    letter-spacing: -0.01em;
+  }
+
+  &__heading-script {
+    font-family: "styleMain", cursive;
+    font-weight: 400;
+    color: #e8ddd0;
+    letter-spacing: 0;
+  }
+
+  // ─── Sub row: script subtitle + subheadings ──────────────────────────────
+  &__sub-row {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 0.1em;
+  }
+
+  // "Ocean View" in script — left side, same width as "Your" column approx
+  &__subtitle {
+    font-family: "styleMain", cursive;
+    font-weight: 400;
+    color: #e8ddd0;
+    margin: 0;
+    white-space: nowrap;
+
+    font-size: clamp(2.2rem, 4vw, 4.8rem);
+
+    @media (min-width: 1920px) {
+      font-size: clamp(4.8rem, 3.6vw, 6.5rem);
+    }
+
+    @media (min-width: 2560px) {
+      font-size: clamp(6rem, 3vw, 9rem);
+    }
+  }
+
+  // Subheadings stack — right side
+  &__subheadings {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15em;
+    margin-left: auto;
+    margin-top: 2rem;
+    position: relative;
+
+    // dim siblings on hover of any child
+    &:has(.hero__subheading:hover) .hero__subheading:not(:hover) {
+      opacity: 0.35;
+      transition: opacity 0.3s ease;
+    }
+  }
+
+  // Individual subheading
+  &__subheading {
+    font-family: "main", serif;
+    color: #f5efe6;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    position: relative;
+    padding-right: 2.5rem;
+
+    font-size: clamp(1rem, 1.6vw, 1.9rem);
+
+    @media (min-width: 1920px) {
+      font-size: clamp(1.9rem, 1.4vw, 2.6rem);
+    }
+
+    @media (min-width: 2560px) {
+      font-size: clamp(1.5rem, 1.2vw, 3rem);
+    }
+
+    @include subheading-underline;
+
+    // hovered item stays fully opaque and on top of image
+    &--hovered {
+      opacity: 1 !important;
+      z-index: 20;
+    }
+  }
+
+  // ─── Hover Portrait Image ─────────────────────────────────────────────────
+  &__hover-image {
+    position: absolute;
+    z-index: 10;
+    pointer-events: none;
+
+    // Position: offset to the left/center of subheadings
+    right: 95%;
+    top: 50%;
+    transform: translateY(-50%) translateX(30%) scale(0.94);
+    margin-right: -2rem;
+
+    width: clamp(180px, 18vw, 320px);
+    aspect-ratio: 2 / 3;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+
+    opacity: 0;
+    transition:
+      opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &--visible {
+      opacity: 1;
+      transform: translateY(-50%) translateX(30%) scale(1);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    // Placeholder when no src
+    &-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        160deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0.03) 100%
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      span {
+        font-family: "main", serif;
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.3);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+    }
+
+    @media (min-width: 1920px) {
+      width: clamp(280px, 16vw, 420px);
+    }
+
+    @media (min-width: 2560px) {
+      width: clamp(380px, 14vw, 560px);
+    }
+  }
+
+  // ─── Responsive: Tablet (iPad mini / Air / Pro) ───────────────────────────
+  @media (min-width: 769px) and (max-width: 1024px) {
+    &__content {
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__center {
+      align-items: center;
+      padding: 0 2rem;
+      width: 100%;
+    }
+
+    &__heading {
+      font-size: clamp(6.5rem, 9vw, 6rem);
+      justify-content: center;
+    }
+
+    &__sub-row {
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 65%;
+      gap: 0;
+    }
+
+    &__subtitle {
+      font-size: clamp(3rem, 4.5vw, 3rem);
+    }
+
+    &__subheadings {
+      margin-left: auto;
+      padding-right: 0;
+    }
+
+    &__subheading {
+      font-size: clamp(1.2rem, 1.8vw, 1.2rem);
+      padding-right: 1rem;
+    }
+
+    &__hover-image {
+      width: clamp(140px, 16vw, 220px);
+    }
+  }
+
+  // ─── Responsive: Mobile ───────────────────────────────────────────────────
+  @media (max-width: 768px) {
+    &__content {
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 3rem;
+    }
+
+    &__center {
+      align-items: center;
+      padding: 0 1.5rem;
+      width: 100%;
+    }
+
+    &__heading {
+      justify-content: center;
+      font-size: clamp(3.2rem, 13vw, 5.5rem);
+      white-space: normal;
+    }
+
+    &__sub-row {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    &__subtitle {
+      font-size: clamp(2rem, 8.5vw, 3.5rem);
+    }
+
+    &__subheadings {
+      padding-left: 0;
+      margin-left: 1rem;
+      gap: 0.5rem;
+      align-self: center;
+      padding-left: 10rem;
+    }
+
+    &__subheading {
+      font-size: clamp(1.1rem, 4.5vw, 1.5rem);
+    }
+
+    // Hide hover image on mobile
+    &__hover-image {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &__heading {
+      font-size: clamp(2.8rem, 14vw, 4rem);
+    }
+
+    &__subtitle {
+      font-size: clamp(1.7rem, 9vw, 2.8rem);
+    }
+  }
+}

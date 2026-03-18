@@ -1,0 +1,19 @@
+@font-face {
+  font-family: main;
+  src: url(/fonts/main.ttf);
+}
+
+@font-face {
+  font-family: main-bold;
+  src: url(/fonts/bold.ttf);
+}
+
+@font-face {
+  font-family: styleMain;
+  src: url(/fonts/style.ttf);
+}
+
+@font-face {
+  font-family: styleBold;
+  src: url(/fonts/styleBold.ttf);
+}
