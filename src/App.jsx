@@ -4,6 +4,7 @@ import Description from "./pages/description/Description";
 import Hero from "./pages/Hero/Hero";
 import Lenis from "lenis";
 import Services from "./pages/Services/Services";
+import Marquee from "./pages/Marquee/Marquee";
 
 function App() {
   const lenis = new Lenis();
@@ -21,6 +22,7 @@ function App() {
       <Description />
       <AboutCarousel />
       <Services />
+      <Marquee />
     </>
   );
 }

@@ -1,0 +1,98 @@
+$bg: #e9e1d6;
+$text: #2e2e2e;
+
+.mq {
+  background-color: $bg;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+
+  // full height on large screens
+  min-height: 100vh;
+
+  // tablet — content height + tasteful padding
+  @media (max-width: 1024px) {
+    min-height: unset;
+    padding: 6rem 0;
+  }
+
+  // mobile
+  @media (max-width: 600px) {
+    padding: 4rem 0;
+  }
+}
+
+// ─── Inner wrapper ────────────────────────────────────────────
+.mq__inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vw;
+
+  @media (max-width: 600px) {
+    gap: 3vw;
+  }
+}
+
+// ─── Each line ────────────────────────────────────────────────
+.mq__line {
+  display: flex;
+  align-items: center;
+  gap: 2.5vw;
+  white-space: nowrap; // keeps text + image on one line always
+  will-change: transform; // perf hint for GSAP
+  padding: 0 2vw;
+}
+
+// ─── Text ─────────────────────────────────────────────────────
+.mq__text {
+  font-family: "styleMain", serif;
+  font-size: clamp(5rem, 15vw, 18rem);
+  font-weight: normal;
+  color: $text;
+  line-height: 1;
+  display: inline-block;
+  letter-spacing: -0.01em;
+
+  @media (max-width: 600px) {
+    font-size: clamp(3.5rem, 15vw, 6rem);
+  }
+}
+
+// ─── Image containers ─────────────────────────────────────────
+.mq__img-wrap {
+  display: inline-flex;
+  flex-shrink: 0;
+  overflow: hidden;
+
+  // line 1 image — landscape rectangle
+  &--1 {
+    width: clamp(160px, 26vw, 400px);
+    height: clamp(100px, 18vw, 270px);
+
+    @media (max-width: 600px) {
+      width: 28vw;
+      height: 18vw;
+    }
+  }
+
+  // line 2 image — slightly different proportion for variety
+  &--2 {
+    width: clamp(160px, 26vw, 400px);
+    height: clamp(100px, 18vw, 270px);
+
+    @media (max-width: 600px) {
+      width: 28vw;
+      height: 18vw;
+    }
+  }
+}
+
+.mq__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
