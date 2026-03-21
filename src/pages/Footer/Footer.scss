@@ -1,0 +1,282 @@
+$bg: #e9e1d6;
+$dark: #011928;
+$muted: rgba(1, 25, 40, 0.45);
+$border: rgba(1, 25, 40, 0.12);
+
+// ── shared underline mixin ─────────────────────────────────────
+@mixin link-underline {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: $dark;
+    transition: width 0.32s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+.footer {
+  background-color: $bg;
+  padding: 6rem 5vw 0;
+
+  @media (max-width: 768px) {
+    padding: 4rem 1.5rem 0;
+  }
+}
+
+// ─── Top heading area ─────────────────────────────────────────
+.footer__top {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 3.5rem;
+  }
+}
+
+.footer__heading-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+// overflow hidden container for reveal
+.footer__overflow {
+  overflow: hidden;
+  display: block;
+}
+
+// main heading row — come stay + with us inline
+.footer__main-heading-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.footer__come-stay {
+  font-family: "main", sans-serif;
+  font-size: clamp(2.8rem, 4vw, 6rem);
+  color: $dark;
+  display: inline-block;
+  line-height: 1.2;
+}
+
+.footer__with-us {
+  font-family: "styleMain", serif;
+  font-size: clamp(2.8rem, 4vw, 6rem);
+  color: $dark;
+  display: inline-block;
+  line-height: 1.1;
+  font-weight: normal;
+}
+
+// ocean view + subheadings row
+.footer__sub-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 85%;
+  margin-top: 0.5rem;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+}
+
+.footer__hotel-name {
+  font-family: "styleMain", serif;
+  font-size: clamp(1.4rem, 2.5vw, 2.8rem);
+  color: $dark;
+  font-weight: normal;
+  margin: 0;
+}
+
+// subheadings list
+.footer__subheadings {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+
+  // dim siblings on hover
+  &--hovering li .footer__sublink {
+    opacity: 0.35;
+  }
+
+  &--hovering li:hover .footer__sublink {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    align-items: center;
+  }
+}
+
+.footer__sublink {
+  font-family: "main", sans-serif;
+  font-size: clamp(1rem, 1.6vw, 1.4rem);
+  color: $dark;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  display: inline-block;
+
+  @include link-underline;
+}
+
+// ─── Bottom section ───────────────────────────────────────────
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 3.5rem 0;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 1.5rem 0;
+  }
+}
+
+// left — logo + socials
+.footer__left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    align-items: center;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.footer__logo-img {
+  height: 140px;
+  width: auto;
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+.footer__socials {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.footer__social-link {
+  color: $dark;
+  font-size: 1.1rem;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+// right — link columns
+.footer__links {
+  display: flex;
+  gap: 5vw;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+}
+
+.footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 140px;
+}
+
+.footer__col-heading {
+  font-family: "main-bold", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $dark;
+  margin: 0 0 0.5rem;
+}
+
+// address block
+.footer__address {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin: 0;
+
+  p {
+    font-family: "main", sans-serif;
+    font-size: 0.85rem;
+    color: $muted;
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+// link lists
+.footer__link-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+
+  // dim siblings on hover
+  &--hovering li .footer__link {
+    opacity: 0.35;
+  }
+
+  &--hovering li:hover .footer__link {
+    opacity: 1;
+  }
+}
+
+.footer__link {
+  font-family: "main", sans-serif;
+  font-size: 0.88rem;
+  color: $dark;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  display: inline-block;
+
+  @include link-underline;
+}
+
+// ─── Copyright bar ────────────────────────────────────────────
+.footer__bar {
+  border-top: 1px solid $border;
+  padding: 1.25rem 0;
+}
+
+.footer__copy {
+  font-family: "main", sans-serif;
+  font-size: 0.78rem;
+  color: $muted;
+  margin: 0;
+}

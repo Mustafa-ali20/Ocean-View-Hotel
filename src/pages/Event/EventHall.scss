@@ -1,0 +1,157 @@
+$dark: #011928;
+$text-light: #e8ddd0;
+$text-muted: rgba(232, 221, 208, 0.75);
+$bg: #e9e1d6;
+
+.eh {
+  background-color: $bg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 0;
+  overflow: hidden;
+
+  @media (max-width: 1024px) {
+    padding: 6rem 0;
+  }
+
+  @media (max-width: 600px) {
+    padding: 4rem 0;
+  }
+}
+
+// ─── Expanding container ──────────────────────────────────────
+.eh__container {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // initial state set by GSAP — these are fallbacks
+  width: 80%;
+  height: 65vh;
+  border-radius: 12px;
+
+  @media (max-width: 768px) {
+    width: 88%;
+    height: 75vh;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 600px) {
+    width: 92%;
+    height: 85vh;
+  }
+}
+
+// ─── Image ────────────────────────────────────────────────────
+.eh__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 116%; // extra height for parallax room
+  object-fit: cover;
+  object-position: center;
+  top: -8%; // center the extra height
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+// ─── Overlay ──────────────────────────────────────────────────
+.eh__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(1, 25, 40, 0.2) 0%,
+    rgba(1, 25, 40, 0.55) 60%,
+    rgba(1, 25, 40, 0.65) 100%
+  );
+  z-index: 1;
+}
+
+// ─── Content ──────────────────────────────────────────────────
+.eh__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 2rem;
+  max-width: 700px;
+
+  @media (max-width: 600px) {
+    gap: 1.25rem;
+    padding: 0 1.5rem;
+  }
+}
+
+.eh__mini {
+  font-family: "main-bold", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(232, 221, 208, 0.7);
+  margin: 0;
+}
+
+.eh__heading {
+  font-family: "styleMain", serif;
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  font-weight: normal;
+  color: $text-light;
+  line-height: 0.95;
+  margin: 0;
+
+  @media (max-width: 600px) {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+}
+
+.eh__para {
+  font-family: "main", sans-serif;
+  font-size: clamp(0.88rem, 1.1vw, 1rem);
+  color: $text-muted;
+  line-height: 1.4;
+  margin: 0;
+  max-width: 50ch;
+
+  @media (max-width: 1024px) {
+    max-width: 34ch;
+    width: 34ch;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 0.9rem;
+    max-width: 33ch;
+    width: 33ch;
+  }
+}
+
+.eh__btn {
+  display: inline-flex;
+  align-items: center;
+  background-color: $text-light;
+  color: $dark;
+  font-family: "main-bold", sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  padding: 0.9rem 2.2rem;
+  text-decoration: none;
+  margin-top: 0.5rem;
+  transition: opacity 0.25s ease;
+  border-radius: 10px;
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  @media (max-width: 600px) {
+     font-size: 0.75rem;
+    padding: 0.75rem 1.65rem;
+  }
+}

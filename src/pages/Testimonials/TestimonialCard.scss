@@ -1,0 +1,69 @@
+$card-bg: #011928;
+$text-light: #e8ddd0;
+$text-muted: rgba(232, 221, 208, 0.5);
+$star-color: #c8b89a;
+
+.t-card {
+  flex-shrink: 0;
+  background-color: $card-bg;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: grab;
+  border-radius: 14px;
+  width: 340px;
+  min-height: 350px;
+  justify-content: space-between;
+
+  @media (max-width: 1024px) {
+    width: 320px;
+  }
+
+  @media (max-width: 600px) {
+    width: 62vw;
+    min-height: 280px;
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.t-card__stars {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 4.5rem;
+}
+
+.t-card__star {
+  color: $star-color;
+  font-size: 1rem;
+}
+
+.t-card__country {
+  font-family: "main", sans-serif;
+  font-size: 0.78rem;
+  color: $text-muted;
+  letter-spacing: 0.04em;
+  margin: 0 0 1rem;
+}
+
+.t-card__review {
+  font-family: "main", sans-serif;
+  font-size: clamp(0.88rem, 1vw, 0.95rem);
+  color: $text-light;
+  line-height: 1.72;
+  margin: 0 0 2rem;
+  flex: 1;
+}
+
+.t-card__name {
+  font-family: "main-bold", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $text-muted;
+  margin: 0;
+  margin-top: 0;
+}
