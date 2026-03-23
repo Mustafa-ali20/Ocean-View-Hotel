@@ -12,7 +12,7 @@ export const servicesData = [
     layout: "text-left",
   },
   {
-    id: "love-ella",
+    id: "wellness",
     miniHeading: "Wellness",
     mainHeading: "Indulge in Your Time at Love Ella",
     paragraph:
@@ -26,7 +26,7 @@ export const servicesData = [
   {
     id: "marmara",
     miniHeading: "Wellness",
-    mainHeading: "Groom & Relax at Marmara Men’s",
+    mainHeading: "Groom & Relax at Marmara ",
     paragraph:
     "Refined grooming for the modern man. Marmara is a precise, calm, and considered space where every visit feels like a reset not just a haircut.",
     hasButton: true,
@@ -36,7 +36,7 @@ export const servicesData = [
     layout: "text-left",
   },
   {
-    id: "chariot-cafe",
+    id: "cafè",
     miniHeading: "Dining",
     mainHeading: "Elevated Momemts at Chariot Café",
     paragraph:

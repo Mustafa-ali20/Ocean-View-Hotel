@@ -48,7 +48,9 @@ const AboutCarousel = () => {
               </div>
 
               {/* content — only shown on active card */}
-              <div className={`carousel__content ${isActive ? "carousel__content--visible" : ""}`}>
+              <div
+                className={`carousel__content ${isActive ? "carousel__content--visible" : ""}`}
+              >
                 <h3 className="carousel__heading">{item.heading}</h3>
                 <p className="carousel__para">{item.paragraph}</p>
               </div>

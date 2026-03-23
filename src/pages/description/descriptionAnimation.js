@@ -14,7 +14,7 @@ export function splitIntoWords(containerRef) {
   const walker = document.createTreeWalker(
     container,
     NodeFilter.SHOW_TEXT,
-    null
+    null,
   );
 
   const textNodes = [];
@@ -26,21 +26,23 @@ export function splitIntoWords(containerRef) {
   }
 
   textNodes.forEach((textNode) => {
-    const words = textNode.textContent.split(/(\s+)/);
-    const fragment = document.createDocumentFragment();
+     if (textNode.parentNode.classList.contains("desc-keyword")) return;
 
-    words.forEach((word) => {
-      if (word.match(/^\s+$/)) {
-        fragment.appendChild(document.createTextNode(word));
-      } else {
-        const span = document.createElement("span");
-        span.classList.add("desc-word");
-        span.textContent = word;
-        fragment.appendChild(span);
-      }
-    });
+  const words = textNode.textContent.split(/(\s+)/);
+  const fragment = document.createDocumentFragment();
 
-    textNode.parentNode.replaceChild(fragment, textNode);
+  words.forEach((word) => {
+    if (word.match(/^\s+$/)) {
+      fragment.appendChild(document.createTextNode(word));
+    } else {
+      const span = document.createElement("span");
+      span.classList.add("desc-word");
+      span.textContent = word;
+      fragment.appendChild(span);
+    }
+  });
+
+  textNode.parentNode.replaceChild(fragment, textNode);
   });
 }
 
@@ -52,7 +54,9 @@ export function initScrollReveal(containerRef) {
   const container = containerRef.current;
   if (!container) return;
 
-  const words = container.querySelectorAll(".desc-word");
+  const words = container.querySelectorAll(
+    ".desc-word:not(.desc-keyword .desc-word)",
+  );
   const width = window.innerWidth;
 
   // ── Responsive config ───────────────────────────────────────
@@ -97,7 +101,7 @@ export function initScrollReveal(containerRef) {
         end: scrollConfig.end,
         scrub: scrollConfig.scrub,
       },
-    }
+    },
   );
 
   return () => ScrollTrigger.getAll().forEach((t) => t.kill());
@@ -120,6 +124,6 @@ export function initMobileImageReveal() {
         trigger: ".desc",
         start: "top 80%",
       },
-    }
+    },
   );
 }

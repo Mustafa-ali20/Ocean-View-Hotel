@@ -1,0 +1,21 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  background-color: #011928;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.loader__logo {
+  height: 180px;
+  width: auto;
+}

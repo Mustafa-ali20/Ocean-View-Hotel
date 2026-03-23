@@ -13,7 +13,7 @@ $border: rgba(1, 25, 40, 0.12);
     bottom: -2px;
     left: 0;
     width: 0;
-    height: 1px;
+    height: 2px;
     background: $dark;
     transition: width 0.32s ease;
   }
@@ -232,7 +232,7 @@ $border: rgba(1, 25, 40, 0.12);
   p {
     font-family: "main", sans-serif;
     font-size: 0.85rem;
-    color: $muted;
+    color: $dark;
     margin: 0;
     line-height: 1.5;
   }

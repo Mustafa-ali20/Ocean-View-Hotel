@@ -4,7 +4,7 @@ import ServiceSection from "./ServiceSection";
 
 const Services = () => {
   return (
-    <div id="wellness">
+    <div >
       {servicesData.map((service) => (
         <ServiceSection key={service.id} data={service} />
       ))}

@@ -14,23 +14,30 @@ const Paragraph = ({ hoveredKeyword, onMouseEnter, onMouseLeave }) => {
     const isActive = hoveredKeyword === word;
     const isDimmed = hoveredKeyword !== null && !isActive;
 
-    return (
-      <span
-        key={word}
-        className={[
-          "desc-keyword",
-          isActive ? "desc-keyword--active" : "",
-          isDimmed ? "desc-keyword--dim" : "",
-        ]
-          .filter(Boolean)
-          .join(" ")}
-        onMouseEnter={(e) => onMouseEnter(word, e)}
-        onMouseLeave={onMouseLeave}
-      >
-        {word}
-      </span>
-    );
-  };
+   return (
+    <span
+      key={word}
+      className={[
+        "desc-keyword",
+        isActive ? "desc-keyword--active" : "",
+        isDimmed ? "desc-keyword--dim" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+      style={{
+        color: isActive
+          ? "#e8ddd0"
+          : isDimmed
+          ? "rgba(232, 221, 208, 0.12)"
+          : undefined,
+      }}
+      onMouseEnter={(e) => onMouseEnter(word, e)}
+      onMouseLeave={onMouseLeave}
+    >
+      {word}
+    </span>
+  );
+};
 
   return (
     <>
@@ -40,7 +47,10 @@ const Paragraph = ({ hoveredKeyword, onMouseEnter, onMouseLeave }) => {
       {renderKeyword("Ocean View")}
       <span className="desc-style">, enjoy what our </span>
       {renderKeyword("café")}
-      <span className="desc-style"> creates in harmony with the seasons, and let </span>
+      <span className="desc-style">
+        {" "}
+        creates in harmony with the seasons, and let{" "}
+      </span>
       {renderKeyword("our story")}
       <span className="desc-style"> become part of yours.</span>
     </>
@@ -68,11 +78,11 @@ const Description = () => {
 
   return (
     <section
+      id="about"
       className="desc"
       data-hovering={hoveredKeyword ? "true" : "false"}
     >
       <div className="desc__inner">
-
         <p className="desc__label">Experience life at Ocean View</p>
 
         <h2 className="desc__text" ref={textRef}>
@@ -108,7 +118,6 @@ const Description = () => {
             />
           ))}
         </div>
-
       </div>
     </section>
   );
