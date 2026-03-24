@@ -229,12 +229,13 @@ $border: rgba(1, 25, 40, 0.12);
   gap: 0.45rem;
   margin: 0;
 
-  p {
+  a {
     font-family: "main", sans-serif;
     font-size: 0.85rem;
     color: $dark;
     margin: 0;
     line-height: 1.5;
+    text-decoration: none;
   }
 }
 

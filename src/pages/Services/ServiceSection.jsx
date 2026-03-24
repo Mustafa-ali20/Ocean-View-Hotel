@@ -62,7 +62,7 @@ const ServiceSection = ({ data }) => {
       {/* button — only for non-cafe sections */}
       {data.hasButton && (
         <motion.a
-          href={`https://wa.me/96511111111?text=Hi, I'd like to book ${data.mainHeading}`}
+          href={`https://wa.me/${data.whatsappNumber}?text=Hi`}
           target="_blank"
           rel="noopener noreferrer"
           className="svc__btn"

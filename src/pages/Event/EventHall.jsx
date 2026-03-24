@@ -37,7 +37,7 @@ const EventHall = () => {
           end: "top 10%",
           scrub: 1.4,
         },
-      }
+      },
     );
 
     // ── image parallax — moves slower than container ──────────
@@ -53,7 +53,7 @@ const EventHall = () => {
           end: "bottom top",
           scrub: 2,
         },
-      }
+      },
     );
 
     // ── text reveal synced with scroll ────────────────────────
@@ -70,7 +70,7 @@ const EventHall = () => {
           end: "top 20%",
           scrub: 1.2,
         },
-      }
+      },
     );
 
     return () => ScrollTrigger.getAll().forEach((t) => t.kill());
@@ -95,7 +95,9 @@ const EventHall = () => {
         <div className="eh__content" ref={contentRef}>
           <p className="eh__mini">Celebrate with Elegance</p>
           <h2 className="eh__heading">
-            Your Perfect<br />Celebration Space
+            Your Perfect
+            <br />
+            Celebration Space
           </h2>
           <p className="eh__para">
             Host your most special occasions in a setting designed to impress.
@@ -104,7 +106,7 @@ const EventHall = () => {
             that last a lifetime.
           </p>
           <a
-            href="https://wa.me/96511111111?text=Hi, I'd like to plan an event"
+            href="https://wa.me/96563331736?text=Hi, I'd like to plan an event"
             target="_blank"
             rel="noopener noreferrer"
             className="eh__btn"

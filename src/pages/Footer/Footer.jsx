@@ -24,7 +24,7 @@ const navLinks = [
 ];
 
 const contactLinks = [
-{ label: "Get in Touch", href: "tel:+96522219115" },
+  { label: "Get in Touch", href: "tel:+96563331736" },
   {
     label: "Book a Room",
     href: "https://wa.me/96512345678?text=Hi, I'd like to book a room",
@@ -34,10 +34,10 @@ const contactLinks = [
 const subheadings = [
   {
     label: "Book a Room",
-    href: "https://wa.me/96512345678?text=Hi, I'd like to book a room",
+    href: "https://wa.me/96563331736?text=Hi, I'd like to book a room",
   },
   { label: "View Route", href: "https://maps.app.goo.gl/2frMoADAuRNFhHQ59" },
-  { label: "Get in Touch", href: "tel:+96522219115" },
+  { label: "Get in Touch", href: "tel:+96563331736" },
 ];
 
 const Footer = () => {
@@ -224,9 +224,15 @@ const Footer = () => {
               ))}
             </ul>
             <address className="footer__address">
-              <p>Salem Sabah Al Salem Al Sabah St 54003</p>
-              <a href="tel:+96512345678" className="footer__link">
-                +965 22219115
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://maps.app.goo.gl/2frMoADAuRNFhHQ59"
+              >
+                Salem Sabah Al Salem Al Sabah St 54003
+              </a>
+              <a href="tel:+96563331736" className="footer__link">
+                +965 63331736
               </a>
               <a href="mailto:info@oceanviewkuw.com" className="footer__link">
                 info@oceanviewkuw.com

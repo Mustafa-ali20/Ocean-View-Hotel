@@ -10,6 +10,7 @@ export const servicesData = [
     mainImage: "/images/aboutcarousel/Room.jpeg",
     innerImage: "/images/description/Room.jpeg",
     layout: "text-left",
+     whatsappNumber: "96563331736",
   },
   {
     id: "wellness",
@@ -22,6 +23,7 @@ export const servicesData = [
     mainImage: "/images/services/LE-main.jpeg",
     innerImage: "/images/services/LE-mini.jpeg",
     layout: "text-right",
+     whatsappNumber: "96566747819",
   },
   {
     id: "marmara",
@@ -34,6 +36,7 @@ export const servicesData = [
     mainImage: "/images/services/MM-main.jpeg",
     innerImage: "/images/services/MM-mini.jpeg",
     layout: "text-left",
+     whatsappNumber: "96522207222",
   },
   {
     id: "cafè",
