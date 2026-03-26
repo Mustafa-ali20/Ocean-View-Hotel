@@ -37,10 +37,11 @@ const detailVariant = {
 
 const animateParagraph = (paraEl) => {
   if (!paraEl) return;
-  paraEl.innerHTML = paraEl.dataset.original || paraEl.textContent;
-  paraEl.dataset.original = paraEl.dataset.original || paraEl.textContent;
 
-  const text = paraEl.dataset.original;
+  // always read fresh text, never use stale cache
+  const text = paraEl.dataset.original || paraEl.textContent.trim();
+  paraEl.dataset.original = text;
+
   const words = text.split(" ");
   paraEl.innerHTML = words
     .map((w) => `<span class="rooms-word">${w} </span>`)
@@ -86,6 +87,9 @@ const RoomsSlider = () => {
   const activeRoom = roomsData[activeIndex];
 
   useEffect(() => {
+    if (paraRef.current) {
+      delete paraRef.current.dataset.original; 
+    }
     animateParagraph(paraRef.current);
   }, [activeIndex]);
 
@@ -95,7 +99,7 @@ const RoomsSlider = () => {
 
   return (
     <div className="rooms-slider" id="rooms">
-      {/* ── Overlay content ───────────────────────────────── */}
+      {/* ── Overlay content */}
       <div className="rooms-overlay">
         <div className="rooms-overlay__left">
           <div className="rooms-overlay__name-wrap">
@@ -151,7 +155,7 @@ const RoomsSlider = () => {
         </div>
       </div>
 
-      {/* ── Slider + Arrows wrapper ───────────────────────── */}
+      {/* ── Slider + Arrows wrapper */}
       <div className="rooms-slider__wrapper">
         {/* Left arrow */}
         <button
