@@ -1,42 +1,29 @@
 export const servicesData = [
   {
-    id: "rooms",
-    miniHeading: "Accommodation",
-    mainHeading: "Your Private Ocean Sanctuary",
-    paragraph:
-      "Each of our four rooms is designed with the sea in mind. Wake up to natural light, breathe in the salt air, and let the sound of the ocean set the pace of your day. Simple luxury, thoughtfully arranged.",
-    hasButton: true,
-    buttonText: "Book Now",
-    mainImage: "/images/aboutcarousel/Room.jpeg",
-    innerImage: "/images/description/Room.jpeg",
-    layout: "text-left",
-     whatsappNumber: "96563331736",
-  },
-  {
     id: "wellness",
     miniHeading: "Wellness",
     mainHeading: "Indulge in Your Time at Love Ella",
     paragraph:
-    "A women's wellness space built around intention. Love Ella offers a curated range of treatments from hair care to skin rituals in an environment that feels like it was made just for you.",
+      "A women's wellness space built around intention. Love Ella offers a curated range of treatments from hair care to skin rituals in an environment that feels like it was made just for you.",
     hasButton: true,
     buttonText: "Book Now",
     mainImage: "/images/services/LE-main.jpeg",
     innerImage: "/images/services/LE-mini.jpeg",
-    layout: "text-right",
-     whatsappNumber: "96566747819",
+    layout: "text-left",
+    whatsappNumber: "96566747819",
   },
   {
     id: "marmara",
     miniHeading: "Wellness",
     mainHeading: "Groom & Relax at Marmara ",
     paragraph:
-    "Refined grooming for the modern man. Marmara is a precise, calm, and considered space where every visit feels like a reset not just a haircut.",
+      "Refined grooming for the modern man. Marmara is a precise, calm, and considered space where every visit feels like a reset not just a haircut.",
     hasButton: true,
     buttonText: "Book Now",
     mainImage: "/images/services/MM-main.jpeg",
     innerImage: "/images/services/MM-mini.jpeg",
-    layout: "text-left",
-     whatsappNumber: "96522207222",
+    layout: "text-right",
+    whatsappNumber: "96522207222",
   },
   {
     id: "cafè",
@@ -47,7 +34,7 @@ export const servicesData = [
     hasButton: false,
     mainImage: "/images/services/CH-main.jpeg",
     innerImage: "/images/services/CH-mini.jpeg",
-    layout: "text-right",
+    layout: "text-left",
   },
   {
     id: "habka-cafe",
@@ -58,6 +45,6 @@ export const servicesData = [
     hasButton: false,
     mainImage: "/images/services/HB-main.jpeg",
     innerImage: "/images/services/HB-mini.jpeg",
-    layout: "text-left",
+    layout: "text-right",
   },
 ];

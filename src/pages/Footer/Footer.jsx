@@ -27,7 +27,7 @@ const contactLinks = [
   { label: "Get in Touch", href: "tel:+96563331736" },
   {
     label: "Book a Room",
-    href: "https://wa.me/96512345678?text=Hi, I'd like to book a room",
+    href: "https://wa.me/96563331736?text=Hi, I'd like to book a room",
   },
 ];
 

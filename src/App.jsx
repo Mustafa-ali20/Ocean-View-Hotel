@@ -10,6 +10,7 @@ import Testimonials from "./pages/Testimonials/Testimonials";
 import EventHall from "./pages/Event/EventHall";
 import Footer from "./pages/Footer/Footer";
 import Loader from "./components/Loader/Loader";
+import Rooms from "./pages/Rooms/Rooms";
 
 function App() {
   useEffect(() => {
@@ -28,6 +29,7 @@ function App() {
       <Hero />
       <Description />
       <AboutCarousel />
+      <Rooms />
       <Services />
       <Marquee />
       <Testimonials />
