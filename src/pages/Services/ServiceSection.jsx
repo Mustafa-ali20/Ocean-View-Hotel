@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import useParallax from "./useParallax.js";
 import useServiceAnimation from "./useServiceAnimation";
+import useKenBurns from "./useKenBurns";
 import "./ServiceSection.scss";
 
-// heading reveal animation variants
+// heading reveal animation variants — unchanged
 const headingVariants = {
   hidden: { y: "40%", opacity: 0 },
   visible: (i) => ({
@@ -20,12 +21,16 @@ const headingVariants = {
 const ServiceSection = ({ data }) => {
   const { sectionRef, mainImgRef, innerImgRef } = useParallax();
   const { paraRef } = useServiceAnimation();
+  const { currentIndex, nextIndex, isFading, FADE_DURATION } = useKenBurns(
+    data.galleryImages || [data.mainImage],
+  );
+
   const isReversed = data.layout === "text-right";
+  const images = data.galleryImages || [data.mainImage];
 
   const ContentBlock = (
     <div className="svc__content">
       <div className="svc__headings">
-        {/* mini heading */}
         <div className="svc__mini-wrap">
           <motion.p
             className="svc__mini"
@@ -39,7 +44,6 @@ const ServiceSection = ({ data }) => {
           </motion.p>
         </div>
 
-        {/* main heading */}
         <div className="svc__heading-wrap">
           <motion.h2
             className="svc__heading"
@@ -54,12 +58,10 @@ const ServiceSection = ({ data }) => {
         </div>
       </div>
 
-      {/* paragraph — gsap line reveal */}
       <p className="svc__para" ref={paraRef}>
         {data.paragraph}
       </p>
 
-      {/* button — only for non-cafe sections */}
       {data.hasButton && (
         <motion.a
           href={`https://wa.me/${data.whatsappNumber}?text=Hi`}
@@ -79,18 +81,37 @@ const ServiceSection = ({ data }) => {
 
   const ImageBlock = (
     <div className="svc__images">
-      {/* main large image */}
+      {/* Ken Burns main image slideshow */}
       <div className="svc__main-img-wrap">
+        {/* current image — underneath, stays visible */}
         <img
-          src={data.mainImage}
+          src={images[currentIndex]}
           alt={data.mainHeading}
-          className="svc__main-img"
+          className="svc__main-img svc__main-img--current"
           ref={mainImgRef}
           draggable={false}
         />
+
+        {/* next image — smooth luxury fade in */}
+        <motion.img
+          key={images[nextIndex]}
+          src={images[nextIndex]}
+          alt={data.mainHeading}
+          className="svc__main-img svc__main-img--next"
+          draggable={false}
+          initial={{ opacity: 0, scale: 1.15 }}
+          animate={{
+            opacity: isFading ? 1 : 0,
+            scale: isFading ? 1 : 1.15,
+          }}
+          transition={{
+            duration: FADE_DURATION / 1000,
+            ease: [0.25, 0.46, 0.45, 0.94],
+          }}
+        />
       </div>
 
-      {/* inner smaller image */}
+      {/* inner smaller image — unchanged */}
       <div className="svc__inner-img-wrap">
         <img
           src={data.innerImage}

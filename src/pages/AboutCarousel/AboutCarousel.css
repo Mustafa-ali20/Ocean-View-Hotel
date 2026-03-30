@@ -59,8 +59,8 @@
 }
 @media (max-width: 600px) {
   .carousel__card[data-rel="1"] {
-    transform: translateX(calc(82vw * 1.02));
-    opacity: 0.4;
+    transform: translateX(calc(82vw * 1.1));
+    opacity: 0.84;
   }
 }
 .carousel__card[data-rel="-1"] {
@@ -75,8 +75,8 @@
 }
 @media (max-width: 600px) {
   .carousel__card[data-rel="-1"] {
-    transform: translateX(calc(82vw * -1.02));
-    opacity: 0.4;
+    transform: translateX(calc(82vw * -1.1));
+    opacity: 0.84;
   }
 }
 .carousel__card[data-rel="2"] {

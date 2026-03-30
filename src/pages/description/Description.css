@@ -74,7 +74,7 @@
 }
 .desc__text .desc-keyword {
   font-family: "main", sans-serif;
-  color: rgba(232, 221, 208, 0.2);
+  color: #e8ddd0;
   cursor: default;
   position: relative;
   z-index: 2;
@@ -92,11 +92,15 @@
   transition: width 0.35s ease;
   z-index: 100;
 }
+@media (max-width: 768px) {
+  .desc__text .desc-keyword::after {
+    display: none;
+  }
+}
 .desc__text .desc-keyword:hover::after {
   width: 100%;
 }
 .desc__text .desc-keyword--active {
-  color: #e8ddd0 !important;
   z-index: 50;
 }
 .desc__text .desc-keyword--dim {
