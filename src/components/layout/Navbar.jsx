@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import useNavbar from "./useNavbar";
+import useNavbar from "./Usenavbar";
 import lenis from "../../lib/lenis";
 import "./Navbar.scss";
 
