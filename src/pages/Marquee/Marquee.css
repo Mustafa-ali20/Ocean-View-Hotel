@@ -39,7 +39,7 @@
 }
 
 .mq__text {
-  font-family: "styleMain", serif;
+  font-family: var(--font-style);
   font-size: clamp(5rem, 15vw, 18rem);
   font-weight: normal;
   color: #2e2e2e;

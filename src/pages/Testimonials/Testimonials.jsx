@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
@@ -6,6 +7,7 @@ import { testimonialsData } from "./testimonialsData";
 import TestimonialCard from "./TestimonialCard";
 import useTestimonialDrag from "./useTestimonialDrag";
 import "./Testimonials.scss";
+import { t } from "i18next";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,22 +28,30 @@ const revealVariants = {
   }),
 };
 
-// triple the items for seamless infinite loop
+const translatedTestimonials = testimonialsData.map((item, i) => ({
+  ...item,
+  country: t(`testimonials.t${i + 1}_country`),
+  review: t(`testimonials.t${i + 1}_review`),
+  name: t(`testimonials.t${i + 1}_name`),
+}));
+
 const loopedItems = [
-  ...testimonialsData,
-  ...testimonialsData,
-  ...testimonialsData,
+  ...translatedTestimonials,
+  ...translatedTestimonials,
+  ...translatedTestimonials,
 ];
 
 const Testimonials = () => {
   const paraRef = useRef(null);
   const { trackRef } = useTestimonialDrag(testimonialsData.length);
+  const { t, i18n } = useTranslation();
 
   // GSAP line-by-line paragraph reveal
   useEffect(() => {
     const para = paraRef.current;
     if (!para) return;
 
+    delete para.dataset.original;
     const text = para.textContent;
     const words = text.split(" ");
     para.innerHTML = words
@@ -89,11 +99,11 @@ const Testimonials = () => {
           trigger: para,
           start: "top 85%",
         },
-      }
+      },
     );
 
     return () => ScrollTrigger.getAll().forEach((t) => t.kill());
-  }, []);
+  }, [i18n.language]);
 
   return (
     <section className="ts">
@@ -110,7 +120,7 @@ const Testimonials = () => {
               viewport={{ once: true, amount: 0.4 }}
               variants={revealVariants}
             >
-              Guest Voices
+              {t("testimonials.mini")}
             </motion.p>
           </div>
           <div className="ts__heading-wrap">
@@ -122,7 +132,7 @@ const Testimonials = () => {
               viewport={{ once: true, amount: 0.4 }}
               variants={revealVariants}
             >
-              What Our<br />Guests Say
+              {t("testimonials.heading")}
             </motion.h2>
           </div>
         </div>
@@ -130,9 +140,7 @@ const Testimonials = () => {
         {/* right — para + button */}
         <div className="ts__header-right">
           <p className="ts__para" ref={paraRef}>
-            Real experiences and honest words. Discover how our guests have
-            experienced their stay at the Ocean View Hotel. Authentic
-            impressions that say more than any description.
+            {t("testimonials.para")}
           </p>
           <a
             href={MAPS_LINK}
@@ -140,14 +148,14 @@ const Testimonials = () => {
             rel="noopener noreferrer"
             className="ts__btn"
           >
-            Share Your Experience
+            {t("testimonials.btn")}
           </a>
         </div>
-      </div>
+            </div>
 
-      {/* ── Cards track ─────────────────────────────────── */}
+            {/* ── Cards track ─────────────────────────────────── */}
       <div className="ts__track-wrap">
-        <div className="ts__track" ref={trackRef}>
+        <div className="ts__track" ref={trackRef} style={{ direction: "ltr" }}>
           {loopedItems.map((item, i) => (
             <TestimonialCard key={`${item.id}-${i}`} data={item} />
           ))}

@@ -124,18 +124,23 @@
   }
 
   &__heading-main {
-    font-family: "main", serif;
+    font-family: var(--font-main);
     font-weight: 400;
     color: #e8ddd0;
     letter-spacing: -0.01em;
   }
 
   &__heading-script {
-    font-family: "styleMain", cursive;
-    font-weight: 400;
-    color: #e8ddd0;
-    letter-spacing: 0;
+  font-family: var(--font-style);
+  font-weight: 400;
+  color: #e8ddd0;
+  letter-spacing: 0;
+  line-height: 1; // default for English
+
+  [dir="rtl"] & {
+    line-height: 1; // Arabic only
   }
+}
 
   // ─── Sub row: script subtitle + subheadings ──────────────────────────────
   &__sub-row {
@@ -147,7 +152,7 @@
 
   // "Ocean View" in script — left side, same width as "Your" column approx
   &__subtitle {
-    font-family: "styleMain", cursive;
+    font-family: var(--font-style);
     font-weight: 400;
     color: #e8ddd0;
     margin: 0;
@@ -183,14 +188,14 @@
 
   // Individual subheading
   &__subheading {
-    font-family: "main", serif;
+    font-family: var(--font-main);
     color: #f5efe6;
     cursor: pointer;
     transition: opacity 0.3s ease;
     position: relative;
     padding-right: 2.5rem;
     -webkit-tap-highlight-color: transparent;
-    
+
     font-size: clamp(1rem, 1.6vw, 1.9rem);
 
     @media (min-width: 1920px) {
@@ -264,7 +269,7 @@
       justify-content: center;
 
       span {
-        font-family: "main", serif;
+        font-family: var(--font-main);
         font-size: 0.75rem;
         color: rgba(255, 255, 255, 0.3);
         letter-spacing: 0.1em;

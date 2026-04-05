@@ -64,7 +64,7 @@ $muted: rgba(0, 4, 7, 0.55);
 }
 
 .svc__mini {
-  font-family: "main-bold", sans-serif;
+  font-family: var(--font-bold);
   font-size: 0.72rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -73,7 +73,7 @@ $muted: rgba(0, 4, 7, 0.55);
 }
 
 .svc__heading {
-  font-family: "styleMain", serif;
+  font-family: var(--font-style);
   font-size: clamp(2.8rem, 5.5vw, 5rem);
   font-weight: normal;
   color: $dark;
@@ -129,7 +129,7 @@ $muted: rgba(0, 4, 7, 0.55);
   justify-content: center;
   background-color: $dark;
   color: #e9e1d6;
-  font-family: "main", sans-serif;
+  font-family: var(--font-main);
   font-size: 0.85rem;
   letter-spacing: 0.06em;
   padding: 0.9rem 2.2rem;

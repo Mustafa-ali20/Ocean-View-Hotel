@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -10,6 +11,7 @@ const EventHall = () => {
   const containerRef = useRef(null);
   const imgRef = useRef(null);
   const contentRef = useRef(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -93,25 +95,20 @@ const EventHall = () => {
 
         {/* text content */}
         <div className="eh__content" ref={contentRef}>
-          <p className="eh__mini">Celebrate with Elegance</p>
+          <p className="eh__mini">{t("eventhall.mini")}</p>
           <h2 className="eh__heading">
-            Your Perfect
+            {t("eventhall.heading_1")}
             <br />
-            Celebration Space
+            {t("eventhall.heading_2")}
           </h2>
-          <p className="eh__para">
-            Host your most special occasions in a setting designed to impress.
-            From intimate gatherings to grand celebrations, our elegant event
-            spaces, refined service, and ocean-inspired ambiance create memories
-            that last a lifetime.
-          </p>
+          <p className="eh__para">{t("eventhall.para")}</p>
           <a
             href="https://wa.me/96563331736?text=Hi, I'd like to plan an event"
             target="_blank"
             rel="noopener noreferrer"
             className="eh__btn"
           >
-            Plan Your Event
+            {t("eventhall.btn")}
           </a>
         </div>
       </div>

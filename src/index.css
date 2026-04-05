@@ -17,3 +17,39 @@
   font-family: styleBold;
   src: url(/fonts/styleBold.ttf);
 }
+
+/* Arabic fonts */
+@font-face {
+  font-family: arabicMain;
+  src: url(/fonts/Cairo-Regular.ttf);
+}
+
+@font-face {
+  font-family: arabicBold;
+  src: url(/fonts/Cairo-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: arabicStyle;
+  src: url(/fonts/Amiri-Regular.ttf);
+}
+
+@font-face {
+  font-family: arabicStyleBold;
+  src: url(/fonts/Amiri-Bold.ttf);
+}
+
+/* CSS variables that switch automatically with lang attribute */
+:root {
+  --font-main: "main", sans-serif;
+  --font-bold: "main-bold", sans-serif;
+  --font-style: "styleMain", serif;
+  --font-style-bold: "styleBold", serif;
+}
+
+:root[lang="ar"] {
+  --font-main: "arabicMain", sans-serif;
+  --font-bold: "arabicBold", sans-serif;
+  --font-style: "arabicStyle", serif;
+  --font-style-bold: "arabicStyleBold", serif;
+}

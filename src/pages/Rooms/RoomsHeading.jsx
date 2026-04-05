@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import "./RoomsHeading.scss";
 
 const revealVariant = {
@@ -15,6 +16,8 @@ const revealVariant = {
 };
 
 const RoomsHeading = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="rooms-heading">
       {/* Left — big heading */}
@@ -29,7 +32,7 @@ const RoomsHeading = () => {
               viewport={{ once: true, amount: 0.4 }}
               variants={revealVariant}
             >
-              At
+              {t("rooms.heading_1")}
             </motion.span>
           </div>
           <div className="rooms-heading__overflow">
@@ -41,7 +44,7 @@ const RoomsHeading = () => {
               viewport={{ once: true, amount: 0.4 }}
               variants={revealVariant}
             >
-              &nbsp;home,
+              &nbsp;{t("rooms.heading_2")}
             </motion.span>
           </div>
         </div>
@@ -56,7 +59,7 @@ const RoomsHeading = () => {
               viewport={{ once: true, amount: 0.4 }}
               variants={revealVariant}
             >
-              in
+              {t("rooms.heading_3")}
             </motion.span>
           </div>
           <div className="rooms-heading__overflow">
@@ -68,7 +71,7 @@ const RoomsHeading = () => {
               viewport={{ once: true, amount: 0.4 }}
               variants={revealVariant}
             >
-              &nbsp;our rooms
+              &nbsp;{t("rooms.heading_4")}
             </motion.span>
           </div>
         </div>
@@ -83,7 +86,7 @@ const RoomsHeading = () => {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          Your stay at Ocean View
+          {t("rooms.mini")}
         </motion.p>
 
         <motion.p
@@ -93,9 +96,7 @@ const RoomsHeading = () => {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.6, delay: 0.45 }}
         >
-          Cozy, bright, and full of thoughtful details: our rooms combine charm
-          with modern comfort. Whether with a view or a peaceful corner,
-          you'll find comfort, security, and the feeling of being at home.
+          {t("rooms.para")}
         </motion.p>
       </div>
     </div>

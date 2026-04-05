@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
@@ -7,8 +8,6 @@ import { roomsData } from "./roomsData";
 import "./RoomsSlider.scss";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const loopedRooms = [...roomsData, ...roomsData, ...roomsData];
 
 const nameVariant = {
   initial: { y: "100%" },
@@ -38,7 +37,6 @@ const detailVariant = {
 const animateParagraph = (paraEl) => {
   if (!paraEl) return;
 
-  // always read fresh text, never use stale cache
   const text = paraEl.dataset.original || paraEl.textContent.trim();
   paraEl.dataset.original = text;
 
@@ -82,24 +80,45 @@ const animateParagraph = (paraEl) => {
 };
 
 const RoomsSlider = () => {
-  const { trackRef, activeIndex, slideNext, slidePrev } = useRoomsSlider();
-  const paraRef = useRef(null);
-  const activeRoom = roomsData[activeIndex];
+  // ── destructure everything from hook ──────────────────────────
+  const {
+    trackRef,
+    activeIndex,
+    slideNext,
+    slidePrev,
+    getRelativePosition,
+    handleTouchStart,
+    handleTouchEnd,
+  } = useRoomsSlider();
 
+  const paraRef = useRef(null);
+  const { t, i18n } = useTranslation();
+
+  const translatedRooms = roomsData.map((room, i) => ({
+    ...room,
+    name: t(`rooms.room${i + 1}_name`),
+    description: t(`rooms.room${i + 1}_desc`),
+    guests: t(`rooms.room${i + 1}_guests`),
+    bed1: t(`rooms.room${i + 1}_bed1`),
+    bed2: room.bed2 ? t(`rooms.room${i + 1}_bed2`) : null,
+  }));
+
+  const activeRoom = translatedRooms[activeIndex];
+
+  // animate paragraph when room changes or language changes
   useEffect(() => {
     if (paraRef.current) {
-      delete paraRef.current.dataset.original; 
+      delete paraRef.current.dataset.original;
     }
     animateParagraph(paraRef.current);
-  }, [activeIndex]);
+  }, [activeIndex, i18n.language]);
 
-  const details = [activeRoom.guests, activeRoom.bed1, activeRoom.bed2].filter(
-    Boolean,
-  );
+  const details = [activeRoom.guests, activeRoom.bed1, activeRoom.bed2].filter(Boolean);
 
   return (
     <div className="rooms-slider" id="rooms">
-      {/* ── Overlay content */}
+
+      {/* ── Overlay content ───────────────────────────────── */}
       <div className="rooms-overlay">
         <div className="rooms-overlay__left">
           <div className="rooms-overlay__name-wrap">
@@ -145,50 +164,61 @@ const RoomsSlider = () => {
 
         <div className="rooms-overlay__right">
           <a
-            href={`https://wa.me/96563331736?text=Hi, I want to book a ${activeRoom.name}`}
+            href={`https://wa.me/96563331736?text=Hi, ${t("rooms.book")} ${activeRoom.name} room.`}
             target="_blank"
             rel="noopener noreferrer"
             className="rooms-overlay__btn"
           >
-            Book Now
+            {t("rooms.book")}
           </a>
         </div>
       </div>
 
-      {/* ── Slider + Arrows wrapper */}
+      {/* ── Slider + Arrows wrapper ───────────────────────── */}
       <div className="rooms-slider__wrapper">
+
         {/* Left arrow */}
         <button
           className="rooms-arrow rooms-arrow--left"
           onClick={slidePrev}
           aria-label="Previous room"
         >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="15 18 9 12 15 6" />
           </svg>
         </button>
 
         {/* Image track */}
-        <div className="rooms-track" ref={trackRef}>
-          {loopedRooms.map((room, i) => (
-            <div key={`${room.id}-${i}`} className="rooms-slide">
-              <img
-                src={room.image}
-                alt={room.name}
-                className="rooms-slide__img"
-                draggable={false}
-              />
-            </div>
-          ))}
+        <div
+          className="rooms-track"
+          ref={trackRef}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          {translatedRooms.map((room, i) => {
+            const rel = getRelativePosition(i);
+            const isVisible = Math.abs(rel) <= 2;
+            if (!isVisible) return null;
+
+            return (
+              <div
+                key={room.id}
+                className="rooms-slide"
+                data-rel={rel}
+                onClick={() => {
+                  if (rel === 1) slideNext();
+                  if (rel === -1) slidePrev();
+                }}
+              >
+                <img
+                  src={room.image}
+                  alt={room.name}
+                  className="rooms-slide__img"
+                  draggable={false}
+                />
+              </div>
+            );
+          })}
         </div>
 
         {/* Right arrow */}
@@ -197,19 +227,11 @@ const RoomsSlider = () => {
           onClick={slideNext}
           aria-label="Next room"
         >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="9 18 15 12 9 6" />
           </svg>
         </button>
+
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -9,6 +10,7 @@ const Marquee = () => {
   const sectionRef = useRef(null);
   const line1Ref = useRef(null);
   const line2Ref = useRef(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -29,7 +31,7 @@ const Marquee = () => {
           end: "center center",
           scrub: 1.2,
         },
-      }
+      },
     );
 
     // line 2 starts pushed left (partially off screen), moves to center
@@ -45,7 +47,7 @@ const Marquee = () => {
           end: "center center",
           scrub: 1.2,
         },
-      }
+      },
     );
 
     return () => ScrollTrigger.getAll().forEach((t) => t.kill());
@@ -54,23 +56,29 @@ const Marquee = () => {
   return (
     <section className="mq" ref={sectionRef}>
       <div className="mq__inner">
-
         {/* Line 1 — moves from right */}
         <div className="mq__line" ref={line1Ref}>
-          <span className="mq__text">ocean living</span>
+          <span className="mq__text">{t("marquee.line1")}</span>
           <div className="mq__img-wrap mq__img-wrap--1">
-            <img src="/images/hero/OceanView2.jpg" alt="Pure nature" className="mq__img" />
+            <img
+              src="/images/hero/OceanView2.jpg"
+              alt="Pure nature"
+              className="mq__img"
+            />
           </div>
         </div>
 
         {/* Line 2 — moves from left */}
         <div className="mq__line" ref={line2Ref}>
           <div className="mq__img-wrap mq__img-wrap--2">
-            <img src="/images/description/wellness.jpeg" alt="Alpine cuisine" className="mq__img" />
+            <img
+              src="/images/description/wellness.jpeg"
+              alt="Alpine cuisine"
+              className="mq__img"
+            />
           </div>
-          <span className="mq__text">pure wellness</span>
+          <span className="mq__text">{t("marquee.line2")}</span>
         </div>
-
       </div>
     </section>
   );

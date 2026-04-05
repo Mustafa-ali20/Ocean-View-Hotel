@@ -1,16 +1,27 @@
+import { useTranslation } from "react-i18next";
 import useNavbar from "./useNavbar";
 import lenis from "../../lib/lenis";
 import "./Navbar.scss";
 
-const navLinks = [
-  { label: "Rooms", href: "#rooms" },
-  { label: "Wellness", href: "#wellness" },
-  { label: "Cafè", href: "#cafè" },
-  { label: "About Us", href: "#about" },
-];
-
 const Navbar = () => {
+  const { t, i18n } = useTranslation();
+
+  const navLinks = [
+    { label: t("navbar.rooms"), href: "#rooms" },
+    { label: t("navbar.wellness"), href: "#wellness" },
+    { label: t("navbar.cafe"), href: "#cafe" },
+    { label: t("navbar.about"), href: "#about" },
+  ];
   const { scrolled, menuOpen, toggleMenu, closeMenu } = useNavbar();
+
+  const toggleLang = () => {
+    const next = i18n.language === "en" ? "ar" : "en";
+    i18n.changeLanguage(next);
+    document.documentElement.dir = next === "ar" ? "rtl" : "ltr";
+    document.documentElement.lang = next;
+  };
+
+  const isArabic = i18n.language === "ar";
 
   const handleClick = (e, href) => {
     e.preventDefault();
@@ -31,11 +42,14 @@ const Navbar = () => {
   return (
     <header className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
       <nav className="navbar__inner">
-
         {/* Logo */}
-        <a href="#" className="navbar__logo" onClick={(e) => handleClick(e, "#")}>
+        <a
+          href="#"
+          className="navbar__logo"
+          onClick={(e) => handleClick(e, "#")}
+        >
           <img
-               src={scrolled ? "/images/LOGO.svg" : "/images/LOGO-white.svg"}
+            src={scrolled ? "/images/LOGO.svg" : "/images/LOGO-white.svg"}
             alt="Ocean View"
             className="navbar__logo-img"
           />
@@ -63,15 +77,18 @@ const Navbar = () => {
             className="navbar__link"
             onClick={(e) => handleClick(e, "#contact")}
           >
-            Contact
+            {t("navbar.contact")}
           </a>
           <a
             href="#faq"
             className="navbar__link"
             onClick={(e) => handleClick(e, "#faq")}
           >
-            FAQ
+            {t("navbar.faq")}
           </a>
+          <button className="navbar__lang" onClick={toggleLang}>
+            {isArabic ? "EN" : "عربي"}
+          </button>
         </div>
 
         {/* Hamburger */}
@@ -94,8 +111,8 @@ const Navbar = () => {
         <ul className="navbar__mobile-links">
           {[
             ...navLinks,
-            { label: "Contact", href: "#contact" },
-            { label: "FAQ", href: "#faq" },
+            { label: t("navbar.contact"), href: "#contact" },
+            { label: t("navbar.faq"), href: "#faq" },
           ].map(({ label, href }) => (
             <li key={label}>
               <a
@@ -107,14 +124,22 @@ const Navbar = () => {
               </a>
             </li>
           ))}
+          <li>
+            <button
+              className="navbar__mobile-link navbar__lang-mobile"
+              onClick={toggleLang}
+            >
+              {isArabic ? "EN" : "عربي"}
+            </button>
+          </li>
         </ul>
 
         <div className="navbar__mobile-contact">
           <a href="tel:+96511111111" className="navbar__mobile-phone">
-            +965 1111 1111
+            {t("navbar.phone")}
           </a>
           <a href="mailto:hotel@gmail.com" className="navbar__mobile-email">
-            hotel@gmail.com
+            {t("navbar.email")}
           </a>
         </div>
       </div>

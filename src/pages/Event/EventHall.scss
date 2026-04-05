@@ -91,7 +91,7 @@ $bg: #e9e1d6;
 }
 
 .eh__mini {
-  font-family: "main-bold", sans-serif;
+  font-family: var(--font-bold);
   font-size: 0.72rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -100,7 +100,7 @@ $bg: #e9e1d6;
 }
 
 .eh__heading {
-  font-family: "styleMain", serif;
+  font-family: var(--font-style);
   font-size: clamp(2.4rem, 5vw, 5rem);
   font-weight: normal;
   color: $text-light;
@@ -113,7 +113,7 @@ $bg: #e9e1d6;
 }
 
 .eh__para {
-  font-family: "main", sans-serif;
+  font-family: var(--font-main);
   font-size: clamp(0.88rem, 1.1vw, 1rem);
   color: $text-muted;
   line-height: 1.4;
@@ -137,7 +137,7 @@ $bg: #e9e1d6;
   align-items: center;
   background-color: $text-light;
   color: $dark;
-  font-family: "main-bold", sans-serif;
+  font-family: var(--font-bold);
   font-size: 0.85rem;
   letter-spacing: 0.06em;
   padding: 0.9rem 2.2rem;

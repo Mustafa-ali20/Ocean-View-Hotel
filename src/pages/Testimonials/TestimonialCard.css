@@ -38,7 +38,7 @@
 }
 
 .t-card__country {
-  font-family: "main", sans-serif;
+  font-family: var(--font-main);
   font-size: 0.78rem;
   color: rgba(232, 221, 208, 0.5);
   letter-spacing: 0.04em;
@@ -46,7 +46,7 @@
 }
 
 .t-card__review {
-  font-family: "main", sans-serif;
+  font-family: var(--font-main);
   font-size: clamp(0.88rem, 1vw, 0.95rem);
   color: #e8ddd0;
   line-height: 1.72;
@@ -55,7 +55,7 @@
 }
 
 .t-card__name {
-  font-family: "main-bold", sans-serif;
+  font-family: var(--font-bold);
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;

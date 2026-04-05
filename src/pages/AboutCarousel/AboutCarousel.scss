@@ -71,7 +71,7 @@ $card-size-mobile: 82vw;
     }
 
     @media (max-width: 600px) {
-      transform: translateX(calc(#{$card-size-mobile} * 1.10));
+      transform: translateX(calc(#{$card-size-mobile} * 1.1));
       opacity: 0.84;
     }
   }
@@ -86,8 +86,8 @@ $card-size-mobile: 82vw;
     }
 
     @media (max-width: 600px) {
-      transform: translateX(calc(#{$card-size-mobile} * -1.10));
-      opacity: 0.84; 
+      transform: translateX(calc(#{$card-size-mobile} * -1.1));
+      opacity: 0.84;
     }
   }
 
@@ -149,22 +149,22 @@ $card-size-mobile: 82vw;
 }
 
 .carousel__heading {
-  font-family: "main-bold", sans-serif;
+  font-family: var(--font-bold);
   font-size: clamp(1rem, 1.5vw, 1.1rem);
   color: $text-dark;
   margin: 0 0 0.6rem;
   letter-spacing: 0.01em;
-   user-select: none;
+  user-select: none;
 }
 
 .carousel__para {
-  font-family: "main", sans-serif;
+  font-family: var(--font-main);
   font-size: clamp(0.82rem, 1.1vw, 0.75rem);
   color: $text-muted;
   line-height: 1.35;
   margin: 0;
   max-width: 38ch;
-   user-select: none;
+  user-select: none;
 }
 
 // ─── Nav arrows ───────────────────────────────────────────────

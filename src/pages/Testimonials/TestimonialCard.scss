@@ -42,7 +42,7 @@ $star-color: #c8b89a;
 }
 
 .t-card__country {
-  font-family: "main", sans-serif;
+  font-family: var(--font-main);
   font-size: 0.78rem;
   color: $text-muted;
   letter-spacing: 0.04em;
@@ -50,7 +50,7 @@ $star-color: #c8b89a;
 }
 
 .t-card__review {
-  font-family: "main", sans-serif;
+  font-family: var(--font-main);
   font-size: clamp(0.88rem, 1vw, 0.95rem);
   color: $text-light;
   line-height: 1.72;
@@ -59,7 +59,7 @@ $star-color: #c8b89a;
 }
 
 .t-card__name {
-  font-family: "main-bold", sans-serif;
+  font-family: var(--font-bold);
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;

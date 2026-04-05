@@ -40,7 +40,7 @@
 }
 
 .desc__label {
-  font-family: "main-bold", sans-serif;
+  font-family: var(--font-bold);
   font-size: 0.75rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -51,12 +51,15 @@
 }
 
 .desc__text {
-  font-family: "styleMain", serif;
+  font-family: var(--font-style);
   font-size: clamp(2.6rem, 4.5vw, 4.2rem);
   line-height: 1.15;
   font-weight: normal;
   margin: 0;
   position: relative;
+}
+[dir=rtl] .desc__text {
+  line-height: 1.35;
 }
 @media (max-width: 768px) {
   .desc__text {
@@ -64,7 +67,7 @@
   }
 }
 .desc__text .desc-style {
-  font-family: "styleMain", serif;
+  font-family: var(--font-style);
   color: rgba(232, 221, 208, 0.2);
   transition: color 0.3s ease;
 }
@@ -73,7 +76,7 @@
   transition: color 0.3s ease;
 }
 .desc__text .desc-keyword {
-  font-family: "main", sans-serif;
+  font-family: var(--font-main);
   color: #e8ddd0;
   cursor: default;
   position: relative;

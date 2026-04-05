@@ -11,7 +11,7 @@ export const carouselItems = [
     image: "/images/description/view.jpg",
     heading: "Family-Run Ocean Retreat",
     paragraph:
-      "Three generations of hospitality flow through these walls. We don't just welcome guests — we welcome people into our story.",
+      "Every corner of our hotel is designed with intention — creating moments that feel warm, effortless, and truly yours.",
   },
   {
     id: 3,
@@ -23,9 +23,9 @@ export const carouselItems = [
   {
     id: 4,
     image: "/images/aboutcarousel/cafe.jpeg",
-    heading: "Coastal Café Experience",
+    heading: "In-House Cafés",
     paragraph:
-      "From the first coffee of the morning to a quiet evening drink, our rooftop café offers a view worth lingering over.",
+      "Start your day with fresh coffee or wind down in the evening — our cafés are designed to offer comfort, flavor, and a space to relax.",
   },
   {
     id: 5,

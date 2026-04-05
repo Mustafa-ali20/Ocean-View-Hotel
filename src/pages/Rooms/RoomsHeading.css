@@ -31,15 +31,18 @@
 }
 
 .rooms-heading__main {
-  font-family: "main", sans-serif;
+  font-family: var(--font-main);
   font-size: clamp(3.5rem, 5vw, 6rem);
   color: #011928;
   line-height: 0.8;
   display: inline-block;
 }
+[dir=rtl] .rooms-heading__main {
+  line-height: 1.5;
+}
 
 .rooms-heading__style {
-  font-family: "styleMain", serif;
+  font-family: var(--font-style-bold);
   font-size: clamp(3.5rem, 5vw, 6rem);
   color: #011928;
   font-weight: normal;
@@ -62,7 +65,7 @@
 }
 
 .rooms-heading__mini {
-  font-family: "main-bold", sans-serif;
+  font-family: var(--font-bold);
   font-size: 0.8rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -71,7 +74,7 @@
 }
 
 .rooms-heading__para {
-  font-family: "main", sans-serif;
+  font-family: var(--font-main);
   font-size: clamp(0.9rem, 1.1vw, 1rem);
   color: rgba(1, 25, 40, 0.55);
   line-height: 1.3;

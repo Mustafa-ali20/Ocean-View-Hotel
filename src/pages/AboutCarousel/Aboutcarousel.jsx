@@ -1,8 +1,17 @@
+import { useTranslation } from "react-i18next";
 import useCarousel from "./useCarousel";
 import { carouselItems } from "./carouselData";
 import "./AboutCarousel.scss";
 
 const AboutCarousel = () => {
+  const { t } = useTranslation();
+
+  const translatedItems = carouselItems.map((item, i) => ({
+    ...item,
+    heading: t(`carousel.item${i + 1}_heading`),
+    paragraph: t(`carousel.item${i + 1}_para`),
+  }));
+
   const {
     activeIndex,
     trackRef,
@@ -21,7 +30,7 @@ const AboutCarousel = () => {
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-        {carouselItems.map((item, index) => {
+        {translatedItems.map((item, index) => {
           const rel = getRelativePosition(index);
           const isActive = rel === 0;
           const isVisible = Math.abs(rel) <= 2;

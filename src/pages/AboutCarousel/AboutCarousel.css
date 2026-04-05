@@ -131,7 +131,7 @@
 }
 
 .carousel__heading {
-  font-family: "main-bold", sans-serif;
+  font-family: var(--font-bold);
   font-size: clamp(1rem, 1.5vw, 1.1rem);
   color: #011928;
   margin: 0 0 0.6rem;
@@ -142,7 +142,7 @@
 }
 
 .carousel__para {
-  font-family: "main", sans-serif;
+  font-family: var(--font-main);
   font-size: clamp(0.82rem, 1.1vw, 0.75rem);
   color: rgba(26, 26, 26, 0.5);
   line-height: 1.35;

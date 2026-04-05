@@ -42,7 +42,7 @@ $dim-on-hover: rgba(232, 221, 208, 0.12);
 }
 
 .desc__label {
-  font-family: "main-bold", sans-serif;
+  font-family: var(--font-bold);
   font-size: 0.75rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -54,18 +54,22 @@ $dim-on-hover: rgba(232, 221, 208, 0.12);
 
 // ─── Main text ────────────────────────────────────────────────
 .desc__text {
-  font-family: "styleMain", serif;
+  font-family: var(--font-style);
   font-size: clamp(2.6rem, 4.5vw, 4.2rem);
   line-height: 1.15;
   font-weight: normal;
   margin: 0;
   position: relative;
 
+  [dir="rtl"] & {
+    line-height: 1.35; // Arabic only — more line height for Arabic text
+  }
+
   @media (max-width: 768px) {
     z-index: 2;
   }
   .desc-style {
-    font-family: "styleMain", serif;
+    font-family: var(--font-style);
     color: $text-dim;
     transition: color 0.3s ease;
   }
@@ -76,7 +80,7 @@ $dim-on-hover: rgba(232, 221, 208, 0.12);
   }
 
   .desc-keyword {
-    font-family: "main", sans-serif;
+    font-family: var(--font-main);
     color: $text-color;
     cursor: default;
     position: relative;

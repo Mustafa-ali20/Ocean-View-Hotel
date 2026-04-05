@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { FaFacebookF, FaInstagram, FaTiktok } from "react-icons/fa";
 import "./Footer.scss";
@@ -15,38 +16,39 @@ const revealVariants = {
   }),
 };
 
-const navLinks = [
-  { label: "Home", href: "#" },
-  { label: "About Us", href: "#about" },
-  { label: "Wellness", href: "#wellness" },
-  { label: "Cafes", href: "#cafe" },
-  { label: "Contact Us", href: "#contact" },
-];
-
-const contactLinks = [
-  { label: "Get in Touch", href: "tel:+96563331736" },
-  {
-    label: "Book a Room",
-    href: "https://wa.me/96563331736?text=Hi, I'd like to book a room",
-  },
-];
-
-const subheadings = [
-  {
-    label: "Book a Room",
-    href: "https://wa.me/96563331736?text=Hi, I'd like to book a room",
-  },
-  { label: "View Route", href: "https://maps.app.goo.gl/2frMoADAuRNFhHQ59" },
-  { label: "Get in Touch", href: "tel:+96563331736" },
-];
-
 const Footer = () => {
+  const { t } = useTranslation();
+
+  const navLinks = [
+    { label: t("footer.link_home"), href: "#" },
+    { label: t("footer.link_about"), href: "#about" },
+    { label: t("footer.link_wellness"), href: "#wellness" },
+    { label: t("footer.link_cafes"), href: "#cafe" },
+    { label: t("footer.link_contact"), href: "#contact" },
+  ];
+
+  const contactLinks = [
+    { label: t("footer.get_in_touch"), href: "tel:+96563331736" },
+    {
+      label: t("footer.book_room"),
+      href: "https://wa.me/96563331736?text=Hi, I'd like to book a room",
+    },
+  ];
+
+  const subheadings = [
+    {
+      label: t("footer.sub1"),
+      href: "https://wa.me/96563331736?text=Hi, I'd like to book a room",
+    },
+    { label: t("footer.sub2"), href: "https://maps.app.goo.gl/2frMoADAuRNFhHQ59" },
+    { label: t("footer.sub3"), href: "tel:+96563331736" },
+  ];
+
   return (
     <footer id="contact" className="footer">
       {/* ── Top center heading area ───────────────────────── */}
       <div className="footer__top">
         <div className="footer__heading-wrap">
-          {/* main heading */}
           <div className="footer__main-heading-row">
             <div className="footer__overflow">
               <motion.span
@@ -57,7 +59,7 @@ const Footer = () => {
                 viewport={{ once: true, amount: 0.4 }}
                 variants={revealVariants}
               >
-                Come Stay
+                {t("footer.come_stay")}
               </motion.span>
             </div>
             <div className="footer__overflow">
@@ -69,14 +71,12 @@ const Footer = () => {
                 viewport={{ once: true, amount: 0.4 }}
                 variants={revealVariants}
               >
-                &nbsp;With Us,
+                &nbsp;{t("footer.with_us")}
               </motion.span>
             </div>
           </div>
 
-          {/* ocean view + subheadings row */}
           <div className="footer__sub-row">
-            {/* hotel name */}
             <div className="footer__overflow">
               <motion.p
                 className="footer__hotel-name"
@@ -86,20 +86,17 @@ const Footer = () => {
                 viewport={{ once: true, amount: 0.4 }}
                 variants={revealVariants}
               >
-                Ocean View
+                {t("footer.hotel_name")}
               </motion.p>
             </div>
 
-            {/* subheadings — hover group */}
             <ul
               className="footer__subheadings"
               onMouseEnter={(e) =>
                 e.currentTarget.classList.add("footer__subheadings--hovering")
               }
               onMouseLeave={(e) =>
-                e.currentTarget.classList.remove(
-                  "footer__subheadings--hovering",
-                )
+                e.currentTarget.classList.remove("footer__subheadings--hovering")
               }
             >
               {subheadings.map((item, i) => (
@@ -130,7 +127,6 @@ const Footer = () => {
 
       {/* ── Bottom section ────────────────────────────────── */}
       <div className="footer__bottom">
-        {/* left — logo + socials */}
         <div className="footer__left">
           <div className="footer__logo">
             <img
@@ -170,11 +166,9 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* right — link columns */}
         <div className="footer__links">
-          {/* column 1 — ocean view nav */}
           <div className="footer__col">
-            <p className="footer__col-heading">Ocean View</p>
+            <p className="footer__col-heading">{t("footer.col1_heading")}</p>
             <ul
               className="footer__link-list"
               onMouseEnter={(e) =>
@@ -194,9 +188,8 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* column 2 — contact */}
           <div className="footer__col">
-            <p className="footer__col-heading">Contact Us</p>
+            <p className="footer__col-heading">{t("footer.col2_heading")}</p>
             <ul
               className="footer__link-list footer__link-list--contact"
               onMouseEnter={(e) =>
@@ -229,13 +222,13 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 href="https://maps.app.goo.gl/2frMoADAuRNFhHQ59"
               >
-                Salem Sabah Al Salem Al Sabah St 54003
+                {t("footer.address")}
               </a>
               <a href="tel:+96563331736" className="footer__link">
-                +965 63331736
+                {t("footer.phone")}
               </a>
               <a href="mailto:info@oceanviewkuw.com" className="footer__link">
-                info@oceanviewkuw.com
+                {t("footer.email")}
               </a>
             </address>
           </div>
@@ -245,7 +238,7 @@ const Footer = () => {
       {/* ── Copyright bar ─────────────────────────────────── */}
       <div className="footer__bar">
         <p className="footer__copy">
-          © {new Date().getFullYear()} Ocean View Hotel — All Rights Reserved.
+          © {new Date().getFullYear()} {t("footer.copyright")}
         </p>
       </div>
     </footer>

@@ -2,31 +2,31 @@ import { useState, useCallback, useRef } from "react";
 
 // placeholder images — replace src with real ones later
 export const keywordImages = {
-  "your room": {
+  1: {
     src: "/images/description/Room.jpeg",
     alt: "Hotel room",
     width: 400,
     height: 500,
-    offsetX: -90,
+    offsetX: -10,
     offsetY: 360,
   },
-  "Ocean View": {
+  2: {
     src: "/images/description/view.jpg",
     alt: "Ocean view",
     width: 420,
     height: 300,
-    offsetX: 100,
+    offsetX: -20,
     offsetY: 160,
   },
-  café: {
+  3: {
     src: "/images/description/cafe.jpeg",
     alt: "Café",
     width: 380,
     height: 240,
-    offsetX: -20,
+    offsetX: 50,
     offsetY: 160,
   },
-  "our story": {
+  4: {
     src: "/images/description/Hotel.jpeg",
     alt: "Our story",
     width: 280,

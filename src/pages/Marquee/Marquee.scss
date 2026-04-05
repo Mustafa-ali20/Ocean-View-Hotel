@@ -46,7 +46,7 @@ $text: #2e2e2e;
 
 // ─── Text ─────────────────────────────────────────────────────
 .mq__text {
-  font-family: "styleMain", serif;
+  font-family: var(--font-style);
   font-size: clamp(5rem, 15vw, 18rem);
   font-weight: normal;
   color: $text;

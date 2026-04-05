@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
@@ -7,36 +8,7 @@ import "./Hero.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
-const subheadings = [
-  {
-    id: "rooms",
-    label: "In Our Rooms.",
-    imageSrc: "/images/hero/Room.webp",
-    imageAlt: "Hotel Rooms",
-  },
-  {
-    id: "cafe",
-    label: "At The Café.",
-    imageSrc: "/images/hero/cafe.webp",
-    imageAlt: "The Café",
-  },
-  {
-    id: "wellness",
-    label: "In Wellness.",
-    imageSrc: "/images/hero/wellness.webp",
-    imageAlt: "Wellness & Spa",
-  },
-  {
-    id: "with-us",
-    label: "With Us.",
-    imageSrc: "/images/hero/withus.webp",
-    imageAlt: "With Us",
-  },
-];
-
 // ─── Animation variants ───────────────────────────────────────────────────────
-
 // heading reveal — slides up from below overflow container
 const headingVariant = {
   hidden: { y: "100%", opacity: 0 },
@@ -70,48 +42,75 @@ const Hero = () => {
   const { hoveredIndex, imageVisible, handleMouseEnter, handleMouseLeave } =
     useHero();
 
+  const { t } = useTranslation();
+
   const bgImgRef = useRef(null);
   const sectionRef = useRef(null);
 
-  useEffect(() => {
-    const bg = bgImgRef.current;
-    const section = sectionRef.current;
-    if (!bg || !section) return;
+useEffect(() => {
+  const bg = bgImgRef.current;
+  const section = sectionRef.current;
+  if (!bg || !section) return;
 
-    // bg image starts slightly scaled up, eases to normal on scroll
-    gsap.fromTo(
-      bg,
-      { scale: 1.08 },
-      {
-        scale: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1.8,
-        },
-      }
-    );
+  // bg image starts slightly scaled up, eases to normal on scroll
+  gsap.fromTo(
+    bg,
+    { scale: 1.08 },
+    {
+      scale: 1,
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        end: "bottom top",
+        scrub: 1.8,
+      },
+    }
+  );
+}, []);
 
-    return () => ScrollTrigger.getAll().forEach((t) => t.kill());
-  }, []);
+// ─── Data ─────────────────────────────────────────────────────────────────────
+const subheadings = [
+  {
+    id: "rooms",
+    label: t("hero.sub1"),
+    imageSrc: "/images/hero/Room.webp",
+    imageAlt: "Hotel Rooms",
+  },
+  {
+    id: "cafe",
+    label: t("hero.sub2"),
+    imageSrc: "/images/hero/cafe.webp",
+    imageAlt: "The Café",
+  },
+  {
+    id: "wellness",
+    label: t("hero.sub3"),
+    imageSrc: "/images/hero/wellness.webp",
+    imageAlt: "Wellness & Spa",
+  },
+  {
+    id: "with-us",
+    label: t("hero.sub4"),
+    imageSrc: "/images/hero/withus.webp",
+    imageAlt: "With Us",
+  },
+];
 
-  return (
-    <section id="home" className="hero" ref={sectionRef}>
-      {/* Background */}
-      <div className="hero__bg">
-        <img
-          src="/images/hero/OceanView3.jpg"
-          alt="Ocean View Hotel"
-          ref={bgImgRef}
-        />
-      </div>
+return (
+  <section className="hero" ref={sectionRef}>
+    {/* Background image */}
+    <div className="hero__bg">
+      <img
+        src="/images/hero/OceanView3.jpg"
+        alt="Ocean View Hotel"
+        ref={bgImgRef}
+      />
+    </div>
 
       {/* Main content */}
       <div className="hero__content">
         <div className="hero__center">
-
           {/* Line 1: "Your Home," — each word in overflow container */}
           <h1 className="hero__heading">
             <div className="hero__overflow">
@@ -122,7 +121,7 @@ const Hero = () => {
                 animate="visible"
                 variants={headingVariant}
               >
-                Your
+                {t("hero.heading_main")}
               </motion.span>
             </div>
             <div className="hero__overflow">
@@ -133,7 +132,7 @@ const Hero = () => {
                 animate="visible"
                 variants={headingVariant}
               >
-                Home,
+                {t("hero.heading_script")}
               </motion.span>
             </div>
           </h1>
@@ -148,7 +147,7 @@ const Hero = () => {
                 animate="visible"
                 variants={headingVariant}
               >
-                Ocean View.
+                {t("hero.subtitle")}
               </motion.p>
             </div>
 
