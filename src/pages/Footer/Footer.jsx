@@ -227,7 +227,7 @@ const Footer = () => {
               <a href="tel:+96563331736" className="footer__link">
                 {t("footer.phone")}
               </a>
-              <a href="mailto:info@oceanviewkuw.com" className="footer__link">
+              <a href="mailto:info@oceanviewkw.com" className="footer__link">
                 {t("footer.email")}
               </a>
             </address>

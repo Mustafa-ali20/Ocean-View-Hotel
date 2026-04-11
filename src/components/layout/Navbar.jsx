@@ -138,7 +138,7 @@ const Navbar = () => {
           <a href="tel:+96511111111" className="navbar__mobile-phone">
             {t("navbar.phone")}
           </a>
-          <a href="mailto:hotel@gmail.com" className="navbar__mobile-email">
+          <a href="mailto:info@oceanviewkw.com" className="navbar__mobile-email">
             {t("navbar.email")}
           </a>
         </div>
