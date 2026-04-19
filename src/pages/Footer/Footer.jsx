@@ -40,7 +40,10 @@ const Footer = () => {
       label: t("footer.sub1"),
       href: "https://wa.me/96563331736?text=Hi, I'd like to book a room",
     },
-    { label: t("footer.sub2"), href: "https://maps.app.goo.gl/2frMoADAuRNFhHQ59" },
+    {
+      label: t("footer.sub2"),
+      href: "https://maps.app.goo.gl/2frMoADAuRNFhHQ59",
+    },
     { label: t("footer.sub3"), href: "tel:+96563331736" },
   ];
 
@@ -96,7 +99,9 @@ const Footer = () => {
                 e.currentTarget.classList.add("footer__subheadings--hovering")
               }
               onMouseLeave={(e) =>
-                e.currentTarget.classList.remove("footer__subheadings--hovering")
+                e.currentTarget.classList.remove(
+                  "footer__subheadings--hovering",
+                )
               }
             >
               {subheadings.map((item, i) => (
@@ -127,45 +132,31 @@ const Footer = () => {
 
       {/* ── Bottom section ────────────────────────────────── */}
       <div className="footer__bottom">
-        <div className="footer__left">
-          <div className="footer__logo">
-            <img
-              src="/images/LOGO.svg"
-              alt="Ocean View Hotel"
-              className="footer__logo-img"
+        {/* Left — Big map */}
+        <div className="footer__map">
+          <a
+            href="https://maps.app.goo.gl/2frMoADAuRNFhHQ59"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer__map-link"
+            aria-label="View on Google Maps"
+          >
+            <iframe
+              title="Ocean View Hotel Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3479.4!2d48.0!3d29.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDE4JzAwLjAiTiA0OMKwMDAnMDAuMCJF!5e0!3m2!1sen!2skw!4v1"
+              className="footer__map-iframe"
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+              tabIndex={-1}
             />
-          </div>
-          <div className="footer__socials">
-            <a
-              href="https://www.facebook.com/people/Ocean-View-Hotel-KW/61568069143294/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer__social-link"
-              aria-label="Facebook"
-            >
-              <FaFacebookF />
-            </a>
-            <a
-              href="https://www.instagram.com/oceanviewkwt/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer__social-link"
-              aria-label="Instagram"
-            >
-              <FaInstagram />
-            </a>
-            <a
-              href="https://www.tiktok.com/@oceanviewkwt"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer__social-link"
-              aria-label="Tiktok"
-            >
-              <FaTiktok />
-            </a>
-          </div>
+            <div className="footer__map-overlay">
+              <span className="footer__map-cta">View on Google Maps ↗</span>
+            </div>
+          </a>
         </div>
 
+        {/* Center — Link columns */}
         <div className="footer__links">
           <div className="footer__col">
             <p className="footer__col-heading">{t("footer.col1_heading")}</p>
@@ -227,10 +218,50 @@ const Footer = () => {
               <a href="tel:+96563331736" className="footer__link">
                 {t("footer.phone")}
               </a>
-              <a href="mailto:info@oceanviewkw.com" className="footer__link">
+              <a href="mailto:reservations@oceanviewkw.com" className="footer__link">
                 {t("footer.email")}
               </a>
             </address>
+          </div>
+        </div>
+
+        {/* Right — Logo + socials */}
+        <div className="footer__right">
+          <div className="footer__logo">
+            <img
+              src="/images/LOGO.svg"
+              alt="Ocean View Hotel"
+              className="footer__logo-img"
+            />
+          </div>
+          <div className="footer__socials">
+            <a
+              href="https://www.facebook.com/people/Ocean-View-Hotel-KW/61568069143294/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer__social-link"
+              aria-label="Facebook"
+            >
+              <FaFacebookF />
+            </a>
+            <a
+              href="https://www.instagram.com/oceanviewkwt/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer__social-link"
+              aria-label="Instagram"
+            >
+              <FaInstagram />
+            </a>
+            <a
+              href="https://www.tiktok.com/@oceanviewkwt"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer__social-link"
+              aria-label="Tiktok"
+            >
+              <FaTiktok />
+            </a>
           </div>
         </div>
       </div>
