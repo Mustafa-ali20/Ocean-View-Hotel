@@ -47,66 +47,72 @@ const Hero = () => {
   const bgImgRef = useRef(null);
   const sectionRef = useRef(null);
 
-useEffect(() => {
-  const bg = bgImgRef.current;
-  const section = sectionRef.current;
-  if (!bg || !section) return;
+  useEffect(() => {
+    const bg = bgImgRef.current;
+    const section = sectionRef.current;
+    if (!bg || !section) return;
 
-  // bg image starts slightly scaled up, eases to normal on scroll
-  gsap.fromTo(
-    bg,
-    { scale: 1.08 },
-    {
-      scale: 1,
-      ease: "none",
-      scrollTrigger: {
-        trigger: section,
-        start: "top top",
-        end: "bottom top",
-        scrub: 1.8,
+    // bg image starts slightly scaled up, eases to normal on scroll
+    gsap.fromTo(
+      bg,
+      { scale: 1.08 },
+      {
+        scale: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1.8,
+        },
       },
-    }
-  );
-}, []);
+    );
+  }, []);
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
-const subheadings = [
-  {
-    id: "rooms",
-    label: t("hero.sub1"),
-    imageSrc: "/images/hero/Room.webp",
-    imageAlt: "Hotel Rooms",
-  },
-  {
-    id: "cafe",
-    label: t("hero.sub2"),
-    imageSrc: "/images/hero/cafe.webp",
-    imageAlt: "The Café",
-  },
-  {
-    id: "wellness",
-    label: t("hero.sub3"),
-    imageSrc: "/images/hero/wellness.webp",
-    imageAlt: "Wellness & Spa",
-  },
-  {
-    id: "with-us",
-    label: t("hero.sub4"),
-    imageSrc: "/images/hero/withus.webp",
-    imageAlt: "With Us",
-  },
-];
+  // ─── Data ─────────────────────────────────────────────────────────────────────
+  const subheadings = [
+    {
+      id: "rooms",
+      label: t("hero.sub1"),
+      imageSrc: "/images/hero/Room.webp",
+      imageAlt: "Hotel Rooms",
+    },
+    {
+      id: "cafe",
+      label: t("hero.sub2"),
+      imageSrc: "/images/hero/cafe.webp",
+      imageAlt: "The Café",
+    },
+    {
+      id: "wellness",
+      label: t("hero.sub3"),
+      imageSrc: "/images/hero/wellness.webp",
+      imageAlt: "Wellness & Spa",
+    },
+    {
+      id: "with-us",
+      label: t("hero.sub4"),
+      imageSrc: "/images/hero/withus.webp",
+      imageAlt: "With Us",
+    },
+    {
+      id: "events",
+      label: t("hero.sub5"),
+      imageSrc: "/images/hero/events.jpeg",
+      imageAlt: "Banquets & Events",
+    },
+  ];
 
-return (
-  <section className="hero" ref={sectionRef}>
-    {/* Background image */}
-    <div className="hero__bg">
-      <img
-        src="/images/hero/OceanView3.jpg"
-        alt="Ocean View Hotel"
-        ref={bgImgRef}
-      />
-    </div>
+  return (
+    <section className="hero" ref={sectionRef}>
+      {/* Background image */}
+      <div className="hero__bg">
+        <img
+          src="/images/hero/OceanView3.jpg"
+          alt="Ocean View Hotel"
+          ref={bgImgRef}
+        />
+      </div>
 
       {/* Main content */}
       <div className="hero__content">

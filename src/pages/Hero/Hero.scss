@@ -110,6 +110,10 @@
     align-items: baseline;
     gap: 0.22em;
     white-space: nowrap;
+    
+    [dir="rtl"] & {
+    line-height: 1.5; // Arabic only
+  }
 
     // font sizes: laptop → monitor → 4k
     font-size: clamp(4.5rem, 8vw, 9.5rem);
