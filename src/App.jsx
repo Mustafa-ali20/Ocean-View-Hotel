@@ -37,7 +37,7 @@ function App() {
 
   return (
     <>
-      {/* <Loader /> */}
+      <Loader />
       <Navbar />
       <Hero />
       <Suspense fallback={null}>

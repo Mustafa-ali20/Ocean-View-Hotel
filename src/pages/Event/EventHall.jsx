@@ -83,7 +83,7 @@ const EventHall = () => {
       {/* expanding image container */}
       <div className="eh__container" ref={containerRef}>
         <img
-          src="/images/services/Hall.jpg"
+          src="/images/hero/events.jpeg"
           alt="Event Hall"
           className="eh__img"
           ref={imgRef}
