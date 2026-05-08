@@ -37,7 +37,17 @@ function App() {
 
   return (
     <>
-      <Loader />
+      <div className="bg-[#011928] h-screen w-full">
+        <div className="flex flex-col items-center justify-center h-full gap-3">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-[main] text-white">
+            Ocean View Hotel
+          </h1>
+          <h2 className="text-base sm:text-xl md:text-2xl lg:text-2xl font-[main] text-white">
+            Site under construction
+          </h2>
+        </div>
+      </div>
+      {/* <Loader />
       <Navbar />
       <Hero />
       <Suspense fallback={null}>
@@ -49,7 +59,7 @@ function App() {
         <Testimonials />
         <EventHall />
         <Footer />
-      </Suspense>
+      </Suspense> */}
     </>
   );
 }
